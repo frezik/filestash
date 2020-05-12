@@ -1,0 +1,6 @@
+node_modules
+dist
+test_dir
+.nyc_output
+*.yaml
+*.log

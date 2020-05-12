@@ -1,0 +1,19 @@
+{
+  "name": "filestore",
+  "version": "0.1.0",
+  "description": "Store files as UUIDs",
+  "main": "index.ts",
+  "scripts": {
+    "test": "tap --ts test/**/*.ts",
+    "prepack": "rm -rf dist && tsc --outDir dist/ index.ts && npx typedoc --out dist/doc src"
+  },
+  "author": "Timm Murray <tmurray@wumpus-cave.net>",
+  "license": "BSD",
+  "dependencies": {
+    "uuid": "^7.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^13.13.5",
+    "tap": "^14.10.7"
+  }
+}

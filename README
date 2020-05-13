@@ -1,0 +1,48 @@
+# Filestash - Stash files away under a unique UUID
+
+    import FileStash from 'filestash';
+    const dst_path = "/path/to/store";
+    
+    const store = FileStash( dst_path );
+    store( "/tmp/some_file.txt" ).then( (new_path) => {
+        console.log( `File now at ${new_path}` );
+    });
+
+Takes a file and moves it to a unique path with a randomly generated UUID. 
+Underneath the destination path, the full path will be broken up by the 
+first two bytes of the UUID. For example, let's say it generates the 
+UUID "035ec4b7-2489-468c-b329-370723362d11" for the file, and you want things 
+to be saved to "/home/foo/bar". This file would be saved at:
+
+    /home/foo/bar/03/5e/035ec4b7-2489-468c-b329-370723362d11
+
+One use case is when you take user uploads. Have your backend framework save the 
+upload to a temporary file, then save it somewhere with Filestash. Take the 
+final destination file and save it to a database along with any metadata.
+
+Note that the original file is removed during the process.
+
+## Copyright
+
+Copyright (c) 2020,  Timm Murray
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, 
+are permitted provided that the following conditions are met:
+
+    * Redistributions of source code must retain the above copyright notice, 
+      this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above copyright notice, 
+      this list of conditions and the following disclaimer in the documentation 
+      and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE 
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR 
+ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES 
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON 
+ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT 
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS 
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.

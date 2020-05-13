@@ -1,4 +1,4 @@
-import FileStore from '../index';
+import FileStash from '../index';
 import * as FS from 'fs';
 import * as GreyGoo from '../index';
 import * as Tap from 'tap';
@@ -13,7 +13,7 @@ Tap.plan( 1 );
 Tap.test( 'File Store', ( test ) => {
     test.plan( 2 );
 
-    const store = FileStore( STORE_DIR );
+    const store = FileStash( STORE_DIR );
     const start_file_path = TMP_DIR + "/foo.txt";
 
     const expected_path_match = new RegExp([

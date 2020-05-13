@@ -1,7 +1,7 @@
 {
-  "name": "filestore",
+  "name": "filestash",
   "version": "0.1.0",
-  "description": "Store files as UUIDs",
+  "description": "Stash files as UUIDs",
   "main": "index.ts",
   "scripts": {
     "test": "tap --ts test/**/*.ts",

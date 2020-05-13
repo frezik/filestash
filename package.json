@@ -1,8 +1,8 @@
 {
   "name": "filestash",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Stash files as UUIDs",
-  "main": "index.ts",
+  "main": "dist/index.js",
   "scripts": {
     "test": "tap --ts test/**/*.ts",
     "prepack": "rm -rf dist && tsc --outDir dist/ index.ts && npx typedoc --out dist/doc src"

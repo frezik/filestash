@@ -1,6 +1,5 @@
-import FileStash from '../index';
+import * as FileStash from '../index';
 import * as FS from 'fs';
-import * as GreyGoo from '../index';
 import * as Tap from 'tap';
 
 const STORE_DIR = 'test_dir/store/';
@@ -11,9 +10,9 @@ Tap.plan( 1 );
 
 
 Tap.test( 'File Store', ( test ) => {
-    test.plan( 2 );
+    test.plan( 3 );
 
-    const store = FileStash( STORE_DIR );
+    const store = FileStash.stash( STORE_DIR );
     const start_file_path = TMP_DIR + "/foo.txt";
 
     const expected_path_match = new RegExp([
@@ -28,6 +27,9 @@ Tap.test( 'File Store', ( test ) => {
         return store( start_file_path );
     }).then( (file_path) => {
         test.comment( `Stored file at ${file_path}` );
+        test.ok( expected_path_match.test( file_path ),
+            "Stored in expected place" );
+
         FSPromises.access( file_path, FS.constants.F_OK ).then( async () => {
             test.pass( "File was stored" );
             // Cleanup

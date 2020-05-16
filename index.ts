@@ -9,7 +9,7 @@ export type storeFunc = (
 ) => Promise<string>;
 
 
-export default function (
+export function stash(
     store_dir: string
 ): storeFunc
 {
@@ -58,4 +58,28 @@ export default function (
             }
         });
     };
+}
+
+export function makeFilePath(
+    store_dir: string
+): string
+{
+    const id = Uuid();
+    const digits = id.match( /^([A-Fa-f0-9]{2})([A-Fa-f0-9]{2})/ );
+
+    if( 0 < digits.length ) {
+        const first = digits[1];
+        const second = digits[2];
+
+        const dst_path = [
+            store_dir
+            ,first
+            ,second
+            ,id
+        ].join( "/" );
+        return dst_path;
+    }
+    else {
+        throw "Generated UUID did not match regex";
+    }
 }

@@ -7,7 +7,6 @@ const STORE_DIR = 'test_dir/store/';
 Tap.plan( 1 );
 
 
-const path = FileStash.makeFilePath( STORE_DIR );
 const expected_path_match = new RegExp([
     STORE_DIR
     ,"/([A-Fa-f0-9]{2})"
@@ -16,5 +15,10 @@ const expected_path_match = new RegExp([
 ].join( "" ) );
 
 
-Tap.ok( expected_path_match.test( path ),
-    "Path in expected place" );
+Tap.test( 'Make path', async ( test ) => {
+    test.plan( 1 );
+
+    const path = await FileStash.makeFilePath( STORE_DIR );
+    test.ok( expected_path_match.test( path ),
+        "Path in expected place" );
+});
